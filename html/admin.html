@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="{{ url_for('assets', path='/css/admin-style.css') }}" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
+        data-tag="font" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+        data-tag="font" />
+</head>
+
+<div>
+    <div id="modal-placeholder"></div>
+    <div class="admin-container">
+        <div class="admin-hero">
+            <div class="admin-div">
+                <span class="admin-logo-label">hive</span>
+                <div class="admin-tools-table">
+                    <div class="admin-tools-heading">
+                        <div class="admin-container1"></div>
+                        <div class="admin-container2">
+                            <span class="admin-text">Name</span>
+                        </div>
+                        <div class="admin-container3">
+                            <span class="admin-text1">Description</span>
+                        </div>
+                        <div class="admin-container4">
+                            <span class="admin-text2">
+                                <span>Link</span>
+                                <br />
+                            </span>
+                        </div>
+                        <div class="admin-container5"></div>
+                    </div>
+                    {% for company in companies %}
+                    <div class="tool-item-tool-item">
+                        <div class="tool-item-image-div">
+                            <img alt="image" src="{{ url_for('assets', path='/images/' + company.companyImage) }}"
+                                class="tool-item-image" />
+                        </div>
+                        <div class="tool-item-name-div">
+                            <span class="tool-item-name-label"><span>{{company.companyName}}</span></span>
+                        </div>
+                        <div class="tool-item-description-div">
+                            <span class="tool-item-description-label">
+                                <span>{{company.companyDescription}}/span>
+                                </span>
+                        </div>
+                        <div class="tool-item-url-div">
+                            <span class="tool-item-url-label">
+                                <span>{{company.companyLink}}</span>
+                            </span>
+                        </div>
+                        <div class="tool-item-button-div">
+                            <button type="button" class="tool-item-delete-button" data-company-name="{{company.companyName}}">
+                                <span>Delete</span>
+                            </button>
+                            <button type="button" class="tool-item-button">
+                                <span>X</span>
+                            </button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <button type="button" class="admin-add-tool-button">
+                    Add Tool
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelector('.admin-add-tool-button').addEventListener('click', function () {
+        fetch('/html/addToolModal.html')
+            .then(response => response.text())
+            .then(html => {
+                window.location.href = '/addTools';
+            });
+    })
+
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var deleteButtons = document.querySelectorAll('.tool-item-delete-button');
+        deleteButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var companyName = this.getAttribute('data-company-name');
+                fetch(`/delete?companyName=${encodeURIComponent(companyName)}`)
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error('Something went wrong :(');
+                        }
+                    })
+                    .then(data => {
+                        alert("Success");
+                        window.location.href = '/admin';
+                    })
+                    .catch(error => {
+                        alert("Something went wrong :(");
+                        console.error('Error:', error);
+                        window.location.href = '/admin';
+                    });
+            });
+        });
+    });
+</script>
+
+
+</html>

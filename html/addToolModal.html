@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+        data-tag="font" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
+        data-tag="font" />
+    <link href="{{ url_for('assets', path='/css/addToolModal-newstyle.css') }}" rel="stylesheet">
+    <link href="{{ url_for('assets', path='/css/admin-style.css') }}" rel="stylesheet">
+</head>
+<div>
+    <div class="modal-container">
+        <div class="modal-container1">
+            <span class="modal-text">Enter Tool Details</span>
+            <div style="margin-top:10px" class="form-group">
+                <span style="font-family: Open Sans;">Name</span>
+                <input class="form-field" type="text" placeholder="Enter company name" id="name-field" required>
+            </div>
+            <div style="margin-top:10px" class="form-group">
+                <span style="font-family: Open Sans;">Image Link</span>
+                <input class="form-field" type="text" placeholder="domain.tld" id="url-field" required>
+            </div>
+            <div style="margin-top:10px" class="form-group">
+                <span style="font-family: Open Sans;">Description</span>
+                <input class="form-field" type="text" placeholder="Enter company description" id="description-field"
+                    required>
+            </div>
+            <div class="modal-container2">
+                <button type="button" class="modal-button" onclick="changeScreen()">
+                    <span class="modal-text1">
+                        <span>Cancel</span>
+                        <br />
+                    </span>
+                </button>
+                <button type="button" class="modal-button1" onclick="submitForm()">
+                    <span class="modal-text4">
+                        <span>Submit</span>
+                        <br />
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function submitForm() {
+        var companyName = document.getElementById('name-field').value;
+        var companyLink = document.getElementById('url-field').value;
+        var companyDescription = document.getElementById('description-field').value;
+
+        if (!companyName.trim() || !companyLink.trim() || !companyDescription.trim()) {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        var formData = new FormData();
+        formData.append('companyName', companyName);
+        formData.append('companyLink', companyLink);
+        formData.append('companyDescription', companyDescription);
+
+        fetch('/addToolToDB', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                window.location.href = '/admin';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Something went wrong. Try again! Make sure Name, URL, and description is entered correctly");
+            });
+
+        event.preventDefault();
+    }
+    function changeScreen()
+    {
+        window.location.href = '/admin';
+    }
+</script>
+
+</script>
+
+</html>

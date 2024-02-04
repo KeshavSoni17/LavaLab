@@ -1,0 +1,91 @@
+@font-face {
+  font-family: 'Helvetica';
+  src: url('/assets/fonts/Helvetica.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.tool-container {
+  width: 274.69px;
+  height: 158.2px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  padding-top: 28.92px;
+  border-color: #C8C8C8;
+  border-width: 0.89px;
+  padding-left: 31.15px;
+  border-radius: 9px;
+  padding-right: 31.15px;
+  flex-direction: column;
+  padding-bottom: 28.92px;
+  background-color: #FEF9F8;
+}
+
+.tool-logo-and-button-div {
+  flex: 0 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.tool-logo-div {
+  flex: 0 0 auto;
+  width: 50%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+}
+
+.tool-logo-image {
+  width: 26.7px;
+  height: 26.7px;
+  object-fit: cover;
+}
+
+.tool-button-div {
+  flex: 0 0 auto;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.tool-connect-button {
+  width: 99px;
+  height: 24px;
+  font-size: 12px;
+  font-family: "Helvetica";
+  border: 1px solid #C8C8C8;
+  border-radius: 5px;
+}
+
+.tool-connect-button:hover {
+  cursor: pointer;
+}
+
+.tool-company-info-div {
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.tool-company-name-label {
+  font-size: 17.8px;
+  margin-top: 12px;
+  font-family: "Helvetica";
+}
+
+.tool-company-description-label {
+  font-size: 13.35px;
+  margin-top: 12px;
+  font-family: "Helvetica";
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

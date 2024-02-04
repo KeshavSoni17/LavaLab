@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<div class="hero-hero">
+  <span class="hero-hero-label">
+    <span>Connect your favorite tools.</span>
+  </span>
+  <div class="hero-tools-grid">
+    {% for company in companies %}
+    {% include 'tools.html' with context %}
+    {% endfor %}
+  </div>
+  <div class="hero-button-div">
+    <button type="button" class="hero-back-button">
+      <span>Back</span>
+    </button>
+    <button type="button" class="hero-finish-button">
+      <span>Finish</span>
+    </button>
+  </div>
+</div>
+
+</html>

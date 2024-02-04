@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="{{ url_for('assets', path='/css/header-style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('assets', path='/css/hero-style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('assets', path='/css/index-style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('assets', path='/css/tools-style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="hive-container">
+        {% include 'header.html' %}
+        {% include 'hero.html' %}
+    </div>
+</body>
+
+</html>

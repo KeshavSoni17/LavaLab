@@ -1,0 +1,74 @@
+@font-face {
+  font-family: 'Helvetica';
+  src: url('/assets/fonts/Helvetica.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.hero-hero {
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  padding-top: 70px;
+  padding-left: 70px;
+  padding-right: 70px;
+  flex-direction: column;
+  padding-bottom: 70px;
+}
+
+.hero-hero-label {
+  font-size: 48px;
+  font-family: "Helvetica";
+}
+
+.hero-tools-grid {
+  gap: 40px;
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  display: grid;
+  margin-top: 64px;
+  grid-template-columns: repeat(auto-fit, minmax(274.6px, min-content));
+}
+
+.hero-button-div {
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  margin-top: 110.78px;
+  align-items: flex-start;
+}
+
+.hero-back-button {
+  width: 112px;
+  height: 56px;
+  font-size: 18px;
+  font-family: "Helvetica";
+  border: 1px solid #C8C8C8;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.hero-back-button:hover {
+  cursor: pointer;
+}
+
+.hero-finish-button {
+  color: white;
+  width: 140px;
+  height: 56px;
+  font-size: 18px;
+  font-family: "Helvetica";
+  margin-left: 24px;
+  border-radius: 10px;
+  background-color: rgb(26, 18, 37);
+}
+
+.hero-finish-button:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
