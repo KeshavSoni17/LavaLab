@@ -8,8 +8,11 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
         data-tag="font" />
-    <link href="{{ url_for('static', path='/css/addToolModal-newstyle.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', path='/css/admin-style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('assets', path='/css/addToolModal-newstyle.css') }}" rel="stylesheet">
+    <link href="{{ url_for('assets', path='/css/admin-style.css') }}" rel="stylesheet">
+    <link href="https://lavalab-production.up.railway.app/assets/css/admin-style.css" rel="stylesheet">
+    <link href="https://lavalab-production.up.railway.app/assets/css/addToolModal-newstyle.css" rel="stylesheet">
+
 </head>
 <div>
     <div class="modal-container">
@@ -78,8 +81,7 @@
 
         event.preventDefault();
     }
-    function changeScreen()
-    {
+    function changeScreen() {
         window.location.href = '/admin';
     }
 </script>

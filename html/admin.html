@@ -2,13 +2,15 @@
 <html>
 
 <head>
-    <link href="{{ url_for('static', path='/css/admin-style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('assets', path='/css/admin-style.css') }}" rel="stylesheet">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
         data-tag="font" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
         data-tag="font" />
+    <link href="https://lavalab-production.up.railway.app/assets/css/admin-style.css" rel="stylesheet">
+
 </head>
 
 <div>
@@ -37,7 +39,7 @@
                     {% for company in companies %}
                     <div class="tool-item-tool-item">
                         <div class="tool-item-image-div">
-                            <img alt="image" src="{{ url_for('static', path='/images/' + company.companyImage) }}"
+                            <img alt="image" src="{{ url_for('assets', path='/images/' + company.companyImage) }}"
                                 class="tool-item-image" />
                         </div>
                         <div class="tool-item-name-div">
@@ -54,7 +56,8 @@
                             </span>
                         </div>
                         <div class="tool-item-button-div">
-                            <button type="button" class="tool-item-delete-button" data-company-name="{{company.companyName}}">
+                            <button type="button" class="tool-item-delete-button"
+                                data-company-name="{{company.companyName}}">
                                 <span>Delete</span>
                             </button>
                             <button type="button" class="tool-item-button">
@@ -83,10 +86,10 @@
 
 </script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         var deleteButtons = document.querySelectorAll('.tool-item-delete-button');
-        deleteButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
+        deleteButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
                 var companyName = this.getAttribute('data-company-name');
                 fetch(`/delete?companyName=${encodeURIComponent(companyName)}`)
                     .then(response => {
