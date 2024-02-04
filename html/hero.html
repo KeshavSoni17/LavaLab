@@ -11,13 +11,24 @@
     {% endfor %}
   </div>
   <div class="hero-button-div">
-    <button type="button" class="hero-back-button">
+    <button type="button" class="hero-back-button" onclick="onBackClick()">
       <span>Back</span>
     </button>
-    <button type="button" class="hero-finish-button">
+    <button type="button" class="hero-finish-button" onclick="onFinishClick()">
       <span>Finish</span>
     </button>
   </div>
 </div>
+
+
+<script>
+  function onBackClick() {
+    alert('Back Clicked');
+  }
+
+  function onFinishClick() {
+    alert('Finish Clicked');
+  }
+</script>
 
 </html>
