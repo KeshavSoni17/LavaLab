@@ -17,7 +17,7 @@ app = FastAPI()
 #     allow_methods=["*"],  
 #     allow_headers=["*"],  
 # )
-app.mount("/assets", StaticFiles(directory="assets"), name="assets")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 app.mount("/scripts", StaticFiles(directory="scripts"), name="scripts")
 app.mount("/html", StaticFiles(directory="html"), name="html")
 templates = Jinja2Templates(directory="html")
@@ -58,7 +58,7 @@ async def home(request: Request):
 
 @app.post("/addToolToDB")
 async def addToolToDB(companyName: str = Form(...), companyLink: str = Form(...), companyDescription: str = Form(...)):
-    imagePath = f"assets/images/{companyName.replace(' ', '_')}.png"
+    imagePath = f"static/images/{companyName.replace(' ', '_')}.png"
 
     try:
         async with httpx.AsyncClient() as client:

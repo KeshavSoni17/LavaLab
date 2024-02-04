@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <link href="{{ url_for('assets', path='/css/admin-style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/css/admin-style.css') }}" rel="stylesheet">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
         data-tag="font" />
@@ -37,7 +37,7 @@
                     {% for company in companies %}
                     <div class="tool-item-tool-item">
                         <div class="tool-item-image-div">
-                            <img alt="image" src="{{ url_for('assets', path='/images/' + company.companyImage) }}"
+                            <img alt="image" src="{{ url_for('static', path='/images/' + company.companyImage) }}"
                                 class="tool-item-image" />
                         </div>
                         <div class="tool-item-name-div">
