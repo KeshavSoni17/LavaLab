@@ -134,6 +134,9 @@
   background-color: rgb(245, 66, 66);
   border-radius: 4px;
 }
+.tool-item-delete-button:hover{
+  cursor: pointer;
+}
 
 .tool-item-button {
   color: white;
@@ -419,6 +422,10 @@
   border-radius: 4px;
 }
 
+
+.admin-add-tool-button:hover{
+  cursor: pointer;
+}
 @media(max-width: 767px) {
   .admin-div {
     padding-left: 10px;

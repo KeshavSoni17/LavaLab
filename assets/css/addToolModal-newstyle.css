@@ -75,6 +75,9 @@
   padding-bottom: 16px;
   background-color: #333333;
 }
+.modal-button:hover{
+  cursor: pointer;
+}
 
 .modal-text1 {
   color: rgb(255, 255, 255);
@@ -92,6 +95,9 @@
   padding-right: 16px;
   padding-bottom: 16px;
   background-color: #9730ff;
+}
+.modal-button1:hover{
+  cursor: pointer;
 }
 
 .modal-text4 {
