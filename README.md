@@ -55,7 +55,7 @@ This is the home page of the application.
 
 ### 6. Admin Dashboard
 
-To access the admin dashboard, navigate to:
+To access the admin dashboard, navigate to (username: admin, password: admin1234):
 
 ```
 http://127.0.0.1:8000/admin

@@ -8,6 +8,10 @@ import httpx
 import aiofiles
 import os
 from fastapi import HTTPException
+from fastapi import FastAPI, Request, Depends, HTTPException, status
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
+from fastapi.templating import Jinja2Templates
+import secrets
 
 app = FastAPI()
 # app.add_middleware(
@@ -17,10 +21,22 @@ app = FastAPI()
 #     allow_methods=["*"],  
 #     allow_headers=["*"],  
 # )
+security = HTTPBasic()
 app.mount("/assets", StaticFiles(directory="assets"), name="assets")
 app.mount("/scripts", StaticFiles(directory="scripts"), name="scripts")
 app.mount("/html", StaticFiles(directory="html"), name="html")
 templates = Jinja2Templates(directory="html")
+
+def verify_credentials(credentials: HTTPBasicCredentials = Depends(security)):
+    correct_username = secrets.compare_digest(credentials.username, "admin")
+    correct_password = secrets.compare_digest(credentials.password, "admin1234")
+    if not (correct_username and correct_password):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect username or password",
+            headers={"WWW-Authenticate": "Basic"},
+        )
+    return credentials
 
 companies = [
     {"companyLink": "https://www.figma.com", "companyName": "Figma", "companyDescription": "Stay up to date with your team’s latest designs.", "companyImage": "figma.png"},
@@ -37,9 +53,8 @@ companies = [
 async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request, "companies": companies})
 
-
 @app.get("/admin")
-async def home(request: Request):
+async def admin(request: Request, credentials: HTTPBasicCredentials = Depends(verify_credentials)):
     return templates.TemplateResponse("admin.html", {"request": request, "companies": companies})
 
 @app.post("/connect/{companyName}")
