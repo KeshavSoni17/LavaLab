@@ -10,13 +10,13 @@ import os
 from fastapi import HTTPException
 
 app = FastAPI()
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],  
-    allow_headers=["*"],  
-)
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["*"],
+#     allow_credentials=False,
+#     allow_methods=["*"],  
+#     allow_headers=["*"],  
+# )
 app.mount("/assets", StaticFiles(directory="assets"), name="assets")
 app.mount("/scripts", StaticFiles(directory="scripts"), name="scripts")
 app.mount("/html", StaticFiles(directory="html"), name="html")
